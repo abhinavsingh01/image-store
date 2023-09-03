@@ -2,6 +2,7 @@
 Image store project to manage albums
 
 ## Technology & framework used
+- GO
 - GIN for REST api calls
 - MySQL for database
 - GORM for ORM
