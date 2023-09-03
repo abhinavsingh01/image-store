@@ -60,6 +60,8 @@ services:
       - "8888:8888"
     networks:
       - backend
+    depends_on:
+      - imageservice
 
   mysql:
     image: mysql:latest

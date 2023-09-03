@@ -144,7 +144,7 @@ var _ = Describe("Integration testing", func() {
 	BeforeSuite(func() {
 		gin.SetMode(gin.TestMode)
 		router = server.InitRoutes(auth)
-		token = "Bearer " + loginUser(router)
+		token = "Bearer " + createNewUser(router)
 	})
 
 	Describe("Get all albums of user", func() {

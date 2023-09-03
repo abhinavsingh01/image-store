@@ -8,4 +8,6 @@ COPY . .
 
 RUN go build -o /apigwservice
 
-ENTRYPOINT exec /apigwservice
+COPY run.sh /app/run.sh
+
+ENTRYPOINT ["/app/run.sh"]
