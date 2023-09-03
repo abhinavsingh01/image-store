@@ -79,7 +79,15 @@ This project is using microservice architecture and has following Microservices 
 
 ## How to run
 ### Locally using docker compose
-- TBD
+- Clone repo
+- Install docker compose
+- Run docker-compose build
+- Run docoker-compose up
+- Open url: `http://localhost:9999`
+
+- On restart if db data persist rune this command to remove db volume `docker volume rm image-store_mysql-data`
+
+- If restarting the services please logout once from browser to remove the access token.
 
 ### Kubernetes
 - TBD
