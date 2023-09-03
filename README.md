@@ -46,7 +46,7 @@ This project is using microservice architecture and has following Microservices 
 ## Concurreny
 - On image upload the image gets processed for resizing into various sizes. GO routines are used for that.
 - On image delete all the resized images will be deleted concurrently using GO routines.
-- On album delete all the images inside that album and their sized will be deleted concurrently using GO routines.
+- On album delete all the images inside that album and different sizes of image will be deleted concurrently using GO routines.
 - Bulk upload images in GO routines.
 
 ## Security
