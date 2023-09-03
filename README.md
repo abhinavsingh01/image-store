@@ -1,7 +1,7 @@
 # image-store
 Image store project to manage albums
 
-##Technology & framework used
+## Technology & framework used
 - GIN for REST api calls
 - MySQL for database
 - GORM for ORM
@@ -85,7 +85,7 @@ This project is using microservice architecture and has following Microservices 
 - Run docoker-compose up
 - Open url: `http://localhost:9999`
 
-- On restart if db data persist rune this command to remove db volume `docker volume rm image-store_mysql-data`
+- On restart if db data persist run this command to remove db volume `docker volume rm image-store_mysql-data`
 
 - If restarting the services please logout once from browser to remove the access token.
 
