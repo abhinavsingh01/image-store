@@ -82,6 +82,9 @@ This project is using microservice architecture and has following Microservices 
 
 ## How to run
 ### Locally using docker compose
+
+`All TESTS will be executed on startp`
+
 - Clone repo
 - Install docker compose
 - Run docker-compose build
