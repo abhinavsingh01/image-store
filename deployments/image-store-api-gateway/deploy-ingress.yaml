@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: image-store-mvp-apigateway
+spec:
+  ingressClassName: avi-lb
+  rules:
+  - host: image-store-mvp-apigateway.tkg.vmware.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: apigateway
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+
+

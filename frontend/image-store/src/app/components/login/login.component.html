@@ -1,0 +1,44 @@
+<app-header></app-header>
+<div class="clr-row">
+  <div
+    class="clr-col-lg-4 clr-col-md-6 clr-col-8 clr-offset-lg-4 clr-offset-md-3 clr-offset-2"
+  >
+    <div class="card">
+      <div class="card-block">
+        <h3 class="card-title">Login</h3>
+        <h5 style="color: red">{{ errorMessage }}</h5>
+        <form>
+          <clr-input-container>
+            <label>Username</label>
+            <input
+              clrInput
+              type="text"
+              name="username"
+              [(ngModel)]="username"
+            />
+          </clr-input-container>
+          <clr-password-container>
+            <label>Password</label>
+            <input
+              clrPassword
+              type="password"
+              name="password"
+              [(ngModel)]="password"
+            />
+          </clr-password-container>
+          <br />
+          <button class="btn btn-primary" type="submit" (click)="login()">
+            Login
+          </button>
+          <button
+            class="btn btn-primary btn-register"
+            type="submit"
+            (click)="register()"
+          >
+            Register
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<app-header></app-header>
+<div class="image-container">
+  <div class="clr-row">
+    <div class="clr-col-6">
+      <h1>{{ albumName }}</h1>
+      <h5 style="color: red">{{ errorMessage }}</h5>
+      <h5 *ngIf="images.length == 0">No Images! Go ahead and upload one.</h5>
+    </div>
+    <div class="clr-col-6" style="text-align: right">
+      <button class="btn btn-primary" type="submit" (click)="openUploadFile()">
+        Add New Image
+      </button>
+    </div>
+  </div>
+  <div class="clr-row">
+    <div
+      class="clr-col-lg-3 clr-col-md-3 clr-col-12"
+      *ngFor="let image of images; let i = index"
+    >
+      <div class="card">
+        <!-- <h3 class="card-header">Album</h3> -->
+        <div class="card-block">
+          <h4 class="card-title" (click)="showImage(image.image_url)">
+            <img [src]="imageDataMap[image.image_url]" width="100%" />
+          </h4>
+          <!-- <div class="card-text">...</div> -->
+        </div>
+        <div class="card-footer">
+          <button
+            class="btn btn-sm btn-link"
+            (click)="deleteImage(i, image.image_url)"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form #formImageUpload>
+  <input
+    type="file"
+    id="imageUpload"
+    name="imageLoader"
+    accept="image/*"
+    (change)="getImageFromFile($event)"
+    hidden
+    multiple
+  />
+</form>
+
+<div class="modal" *ngIf="showImageModal">
+  <div class="modal-dialog" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button aria-label="Close" class="close" type="button">
+          <cds-icon shape="close" (click)="closeImageModal()"></cds-icon>
+        </button>
+      </div>
+      <div class="modal-body" style="height: 500px">
+        <img [src]="imageData" style="max-height: 100%; max-width: 100%" />
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop" aria-hidden="true" *ngIf="showImageModal"></div>
