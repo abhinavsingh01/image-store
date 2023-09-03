@@ -9,6 +9,7 @@ Image store project to manage albums
 - DIG for dependency injection
 - VIPER for config loading
 - ZAP for logging
+- GINKGO for testing
 
 This project is using microservice architecture and has following Microservices and their roles:
 1. Album Microservice
