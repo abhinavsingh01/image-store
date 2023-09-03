@@ -2,6 +2,7 @@ package db
 
 import (
 	config "imageservice/configs"
+	"imageservice/models"
 	"log"
 
 	"gorm.io/driver/mysql"
@@ -20,6 +21,6 @@ func Init() *gorm.DB {
 		log.Fatalf("failed to connect database: %s", err)
 	}
 
-	//db.AutoMigrate(&model.User{})
+	db.AutoMigrate(&models.Image{})
 	return db
 }

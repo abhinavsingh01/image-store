@@ -1,15 +1,13 @@
 package logger
 
 import (
-	config "imageservice/configs"
-
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
 
 func NewLogger() *zap.Logger {
-	level := config.AppConfig.LogLevel
-	log, _ := InitLogger(level)
+	//level := config.AppConfig.LogLevel
+	log, _ := zap.NewProduction()
 	return log
 }
 

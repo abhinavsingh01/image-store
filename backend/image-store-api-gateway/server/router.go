@@ -26,14 +26,14 @@ func InitRoutes(auth middleware.Auth) *gin.Engine {
 		apiAuth := gw.Group("api", auth.Authorize())
 		{
 			v1 := apiAuth.Group("v1")
-			v1.Any("/user/*path", createReverseProxy("http://localhost:8000"))
-			v1.Any("/image/*path", createReverseProxy("http://localhost:8002"))
-			v1.Any("/album/*path", createReverseProxy("http://localhost:8001"))
+			v1.Any("/user/*path", createReverseProxy("http://userservice:8000"))
+			v1.Any("/image/*path", createReverseProxy("http://imageservice:8002"))
+			v1.Any("/album/*path", createReverseProxy("http://albumservice:8001"))
 		}
 		api := gw.Group("api")
 		{
 			v1 := api.Group("v1")
-			v1.Any("/auth/*path", createReverseProxy("http://localhost:8003"))
+			v1.Any("/auth/*path", createReverseProxy("http://authservice:8003"))
 		}
 	}
 

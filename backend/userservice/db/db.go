@@ -3,6 +3,7 @@ package db
 import (
 	"log"
 	config "userservice/configs"
+	"userservice/models"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -20,6 +21,6 @@ func Init() *gorm.DB {
 		log.Fatalf("failed to connect database: %s", err)
 	}
 
-	//db.AutoMigrate(&model.User{})
+	db.AutoMigrate(&models.User{})
 	return db
 }

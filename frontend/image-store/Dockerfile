@@ -1,4 +1,4 @@
-FROM node:14.15.4 as build
+FROM node:18.12.1 as build
 WORKDIR /app
 COPY package*.json /app/
 RUN npm install
@@ -10,8 +10,8 @@ FROM node:14-alpine
 COPY --from=build /app/dist/out /app
 WORKDIR /app
 RUN npm install -g http-server
-EXPOSE 8080
-CMD ["http-server", "-p", "8080"]
+EXPOSE 9999
+CMD ["http-server", "-p", "9999"]
 
 
 

@@ -8,4 +8,6 @@ COPY . .
 
 RUN go build -o /albumservice
 
-ENTRYPOINT exec /albumservice
+COPY scripts/wait.sh /usr/local/bin/wait.sh
+
+CMD ["/usr/local/bin/wait.sh", "mysql:3306", "--", "/albumservice"]

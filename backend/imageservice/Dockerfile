@@ -8,4 +8,6 @@ COPY . .
 
 RUN go build -o /imageservice
 
-ENTRYPOINT exec /imageservice
+COPY scripts/wait.sh /usr/local/bin/wait.sh
+
+CMD ["/usr/local/bin/wait.sh", "mysql:3306", "--", "/imageservice"]

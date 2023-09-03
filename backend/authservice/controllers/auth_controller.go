@@ -29,7 +29,7 @@ func (a *AuthController) Login(c *gin.Context) {
 	var userLogin models.UserLogin
 
 	if err := c.BindJSON(&userLogin); err != nil {
-		a.logger.Error("error in login payload", zap.String("message", err.Error()))
+		a.logger.Error("error in login payload")
 		response.Error = err.Error()
 		c.JSON(http.StatusBadRequest, response)
 		return

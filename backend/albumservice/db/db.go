@@ -2,6 +2,7 @@ package db
 
 import (
 	config "albumservice/configs"
+	"albumservice/models"
 	"log"
 
 	"gorm.io/driver/mysql"
@@ -20,6 +21,6 @@ func Init() *gorm.DB {
 		log.Fatalf("failed to connect database: %s", err)
 	}
 
-	//db.AutoMigrate(&model.User{})
+	db.AutoMigrate(&models.Album{})
 	return db
 }

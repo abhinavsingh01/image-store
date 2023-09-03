@@ -1,0 +1,81 @@
+version: '3'
+
+services:
+  webportal:
+    build:
+      context: ./frontend/image-store
+      dockerfile: Dockerfile
+    ports:
+      - "9999:9999"
+    networks:
+      - backend
+
+  userservice:
+    build:
+      context: ./backend/userservice
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      - backend
+    depends_on:
+      - mysql
+  
+  authservice:
+    build:
+      context: ./backend/authservice
+      dockerfile: Dockerfile
+    ports:
+      - "8003:8003"
+    networks:
+      - backend
+  
+  albumservice:
+    build:
+      context: ./backend/albumservice
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    networks:
+      - backend
+    depends_on:
+      - mysql
+
+  imageservice:
+    build:
+      context: ./backend/imageservice
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8002"
+    networks:
+      - backend
+    depends_on:
+      - mysql
+
+  apiwg:
+    build:
+      context: ./backend/image-store-api-gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8888:8888"
+    networks:
+      - backend
+
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: test@123
+      MYSQL_DATABASE: image_store
+      MYSQL_USER: user
+      MYSQL_PASSWORD: test@123
+    ports:
+      - "3306:3306"
+    networks:
+      - backend
+
+networks:
+  backend:
+
+volumes:
+  mysql-data:
+

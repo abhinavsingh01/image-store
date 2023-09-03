@@ -1,21 +1,22 @@
 package logger
 
 import (
-	config "authservice/configs"
+	"fmt"
 
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
 
 func NewLogger() *zap.Logger {
-	level := config.AppConfig.LogLevel
-	log, _ := InitLogger(level)
+	//level := config.AppConfig.LogLevel
+	log, err := zap.NewProduction()
+	fmt.Println(err)
 	return log
 }
 
 func InitLogger(level string) (*zap.Logger, error) {
 	logConfig := zap.Config{
-		Encoding:    "json",
+
 		Level:       zap.NewAtomicLevelAt(zapcore.InfoLevel),
 		OutputPaths: []string{"stdout"},
 		EncoderConfig: zapcore.EncoderConfig{

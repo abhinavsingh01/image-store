@@ -8,4 +8,8 @@ COPY . .
 
 RUN go build -o /userservice
 
-ENTRYPOINT exec /userservice
+COPY scripts/wait.sh /usr/local/bin/wait.sh
+
+CMD ["/usr/local/bin/wait.sh", "mysql:3306", "--", "/userservice"]
+
+
