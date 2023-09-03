@@ -8,4 +8,7 @@ COPY . .
 
 RUN go build -o /authservice
 
-ENTRYPOINT exec /authservice
+COPY scripts/wait.sh /usr/local/bin/wait.sh
+
+CMD ["/usr/local/bin/wait.sh", "mysql:3306", "--", "/authservice"]
+

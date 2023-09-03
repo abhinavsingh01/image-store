@@ -27,6 +27,7 @@ func (r *Router) InitRouter() *gin.Engine {
 		{
 			userGroup.GET("/:id", r.userCtrl.GetUserById)
 			userGroup.POST("/find", r.userCtrl.FindUser)
+			userGroup.GET("/details", r.userCtrl.GetUserDetails)
 			userGroup.POST("", r.userCtrl.CreateNewUser)
 		}
 	}

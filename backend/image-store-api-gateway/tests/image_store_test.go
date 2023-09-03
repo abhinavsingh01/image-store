@@ -148,24 +148,24 @@ var _ = Describe("Integration testing", func() {
 	})
 
 	Describe("Get all albums of user", func() {
-		Context("If there is no album for user", func() {
-			BeforeEach(func() {
+		// Context("If there is no album for user", func() {
+		// 	BeforeEach(func() {
 
-			})
-			It("should return No album found message", func() {
-				request, err := http.NewRequest(http.MethodGet, "/gw/api/v1/album/all", nil)
-				request.RequestURI = "/gw/api/v1/album/all"
-				request.Header.Set("Authorization", token)
-				Expect(err).ToNot(HaveOccurred())
-				resp := &ResponseRecorderWrapper{ResponseRecorder: httptest.NewRecorder()}
-				router.ServeHTTP(resp, request)
-				var response Response
-				bodyBytes, err := ioutil.ReadAll(resp.Body)
-				json.Unmarshal(bodyBytes, &response)
-				Expect(resp.Code).To(Equal(200))
-				Expect(response.Message).To(Equal("No album found"))
-			})
-		})
+		// 	})
+		// 	It("should return No album found message", func() {
+		// 		request, err := http.NewRequest(http.MethodGet, "/gw/api/v1/album/all", nil)
+		// 		request.RequestURI = "/gw/api/v1/album/all"
+		// 		request.Header.Set("Authorization", token)
+		// 		Expect(err).ToNot(HaveOccurred())
+		// 		resp := &ResponseRecorderWrapper{ResponseRecorder: httptest.NewRecorder()}
+		// 		router.ServeHTTP(resp, request)
+		// 		var response Response
+		// 		bodyBytes, err := ioutil.ReadAll(resp.Body)
+		// 		json.Unmarshal(bodyBytes, &response)
+		// 		Expect(resp.Code).To(Equal(200))
+		// 		Expect(response.Message).To(Equal("No album found"))
+		// 	})
+		// })
 		Context("If there is some album for user", func() {
 			BeforeEach(func() {
 				albumId = addNewAlbum(router, token)

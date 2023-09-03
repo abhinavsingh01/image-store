@@ -29,6 +29,8 @@ services:
       - "8003:8003"
     networks:
       - backend
+    depends_on:
+      - userservice
   
   albumservice:
     build:
@@ -61,7 +63,7 @@ services:
     networks:
       - backend
     depends_on:
-      - imageservice
+      - authservice
 
   mysql:
     image: mysql:latest

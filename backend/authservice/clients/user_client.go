@@ -30,11 +30,11 @@ func (client *UserClientImpl) Register(user *models.UserRequest) error {
 	request.Header.Set("Content-Type", "application/json")
 	response, err := http.DefaultClient.Do(request)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("dsfsfbhjbhbgkbehjgbjkerbghjkebgjkb")
 		return err
 	}
 	defer response.Body.Close()
-	return nil
+	return err
 }
 
 func (client *UserClientImpl) GetUser(user *models.UserLoginRequest) (map[string]interface{}, error) {

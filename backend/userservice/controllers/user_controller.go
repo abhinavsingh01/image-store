@@ -45,6 +45,24 @@ func (u *UserController) GetUserById(c *gin.Context) {
 	return
 }
 
+func (u *UserController) GetUserDetails(c *gin.Context) {
+	response := *&models.Response{}
+
+	id, _ := strconv.Atoi(c.GetHeader("user-id"))
+	user, err := u.userService.FindUserById(id)
+	if err == nil {
+		response.Message = "User found"
+		response.Data = user
+		c.JSON(http.StatusOK, response)
+		return
+	} else {
+		response.Error = "User not found"
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+
+}
+
 func (u *UserController) CreateNewUser(c *gin.Context) {
 	var user models.User
 	response := *&models.Response{}
@@ -55,8 +73,10 @@ func (u *UserController) CreateNewUser(c *gin.Context) {
 	}
 
 	if err := u.userService.CreateNewUser(&user); err != nil {
-		response.Error = "Bad Request"
+		response.Error = "User already exist"
+		u.logger.Error("User already exist")
 		c.JSON(http.StatusBadRequest, response)
+		return
 	}
 
 	c.JSON(http.StatusOK, u)
@@ -68,6 +88,7 @@ func (u *UserController) FindUser(c *gin.Context) {
 	if err := c.BindJSON(&user); err != nil {
 		response.Error = "Bad Request"
 		c.JSON(http.StatusBadRequest, response)
+		return
 	}
 
 	userView, err := u.userService.FindUser(user.Username)

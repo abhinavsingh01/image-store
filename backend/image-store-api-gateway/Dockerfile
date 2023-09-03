@@ -10,4 +10,6 @@ RUN go build -o /apigwservice
 
 COPY run.sh /app/run.sh
 
-ENTRYPOINT ["/app/run.sh"]
+COPY scripts/wait.sh /usr/local/bin/wait.sh
+
+CMD ["/usr/local/bin/wait.sh", "mysql:3306", "--", "/apigwservice"]
