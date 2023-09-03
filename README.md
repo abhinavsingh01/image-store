@@ -1,6 +1,14 @@
 # image-store
 Image store project to manage albums
 
+##Technology & framework used
+- GIN for REST api calls
+- MySQL for database
+- GORM for ORM
+- DIG for dependency injection
+- VIPER for config loading
+- ZAP for logging
+
 This project is using microservice architecture and has following Microservices and their roles:
 1. Album Microservice
   - Create Album
@@ -31,7 +39,7 @@ This project is using microservice architecture and has following Microservices 
 - Upload new image
 - Delete image
 
-Users are restricted and can see their own albums only.
+## Users are restricted and can see their own albums only.
 
 ## Concurreny
 - On image upload the image gets processed for resizing into various sizes. GO routines are used for that.
@@ -43,12 +51,29 @@ Users are restricted and can see their own albums only.
 - JWT mechanism is used for securing APIs.
 - Password are stored in DB using hash.
 
+## Integration Testing using GINKGO
+- Test cases are in gateway under tests folder.
+### Following scenarios are covered
+1. GET all albums of user - check for empty album list.
+2. GET all albums of user - check for albums in list
+3. CREATE album success
+4. CREATE album error
+5. DELETE album succes
+6. DELETE album error on passing wrong id
+7. GET all images of album - check for empty list
+8. GET all images of album - check for images in list
+9. GET all images of album - error is wrong album id
+10. UPLOAD image - success
+11. UPLOAD image - error on wrong album id
+12. GET/DOWNLOAD image - success
+13. GET/DOWNLOAD image - error on wrong album id
+
 ## Points
 - Images are stored locally inside container. In ideal scenario Object storage like S3 should be used.
 - Some data should be cached using Redis.
 
 ## How to run
-### Locally using docker compoe
+### Locally using docker compose
 - TBD
 
 ### Kubernetes
