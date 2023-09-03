@@ -92,7 +92,7 @@ This project is using microservice architecture and has following Microservices 
 - Run docoker-compose up
 - Open url: `http://localhost:9999`
 
-- On restart if db data persist run this command to remove db volume `docker volume rm image-store_mysql-data`
+- On shutdown remove all container using `docker-compose down` and if db data persist run this command to remove db volume `docker volume rm image-store_mysql-data`
 
 - If restarting the services please logout once from browser to remove the access token.
 
