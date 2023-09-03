@@ -68,6 +68,10 @@ This project is using microservice architecture and has following Microservices 
 12. GET/DOWNLOAD image - success
 13. GET/DOWNLOAD image - error on wrong album id
 
+## Module testing
+- GINKGo is used to perform module testing.
+- Album and Image are main microservices and tests for them are in tests fold.
+
 ## Points
 - Images are stored locally inside container. In ideal scenario Object storage like S3 should be used.
 - Some data should be cached using Redis.
