@@ -71,6 +71,7 @@ This project is using microservice architecture and has following Microservices 
 ## Points
 - Images are stored locally inside container. In ideal scenario Object storage like S3 should be used.
 - Some data should be cached using Redis.
+- gRPC for inter communication of microservices.
 
 ## How to run
 ### Locally using docker compose
