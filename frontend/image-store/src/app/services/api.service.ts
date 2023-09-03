@@ -162,16 +162,11 @@ export class ApiService {
       return '';
     }
   }
+
+  getUserDetails(): Observable<any> {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    const url = this.host + `/user/details`;
+    return this.http.get(url, { headers: headers });
+  }
 }
-
-// create album
-
-// read all images of album
-
-// delete album
-
-// upload image
-
-// delete image
-
-// download image

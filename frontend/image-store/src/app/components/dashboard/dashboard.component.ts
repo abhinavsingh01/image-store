@@ -10,14 +10,16 @@ export class DashboardComponent {
   showNewAlbumModal: boolean = false;
   albumName: string = '';
   albums: any[] = [];
+  userName: string = '';
 
   constructor(private api: ApiService) {}
 
   ngOnInit() {
-    this.getAllAlbums();
     if (localStorage.getItem('access_token') == undefined) {
       window.location.href = '/';
     }
+    this.getAllAlbums();
+    this.getUserDetails();
   }
 
   openNewAlbumModal() {
@@ -47,6 +49,15 @@ export class DashboardComponent {
     this.api.getAllAlbums().subscribe(
       (response) => {
         this.albums = response.data;
+      },
+      (error) => {}
+    );
+  }
+
+  getUserDetails(): void {
+    this.api.getUserDetails().subscribe(
+      (response) => {
+        this.userName = response.data.name;
       },
       (error) => {}
     );
