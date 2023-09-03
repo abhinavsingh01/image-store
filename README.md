@@ -29,6 +29,7 @@ This project is using microservice architecture and has following Microservices 
   - Validate JWT
 6. API Gateway
   - Validate all requests foe valid jwt and add `user-id` header
+  - Route requests to downstream microservices
 
 ## Flow of app
 - User opens a web portal.
