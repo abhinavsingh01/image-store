@@ -5,6 +5,14 @@
       <h1>{{ albumName }}</h1>
       <h5 style="color: red">{{ errorMessage }}</h5>
       <h5 *ngIf="images.length == 0">No Images! Go ahead and upload one.</h5>
+      <button
+        *ngIf="images.length > 0"
+        class="btn btn-primary"
+        type="submit"
+        (click)="backToALbum()"
+      >
+        Back
+      </button>
     </div>
     <div class="clr-col-6" style="text-align: right">
       <button class="btn btn-primary" type="submit" (click)="openUploadFile()">

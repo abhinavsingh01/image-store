@@ -29,6 +29,10 @@ export class ImageComponent {
     this.getAllImages();
   }
 
+  backToALbum() {
+    window.history.go(-1);
+  }
+
   getAllImages(): void {
     this.api.getAllImages(this.albumId).subscribe(
       (response) => {
