@@ -15,20 +15,20 @@ This project is using microservice architecture and has following Microservices 
 1. Album Microservice
   - Create Album
   - Delete Album
-3. Image Microservice
+2. Image Microservice
   - Get all images of Album
   - Delete all images of Album (This will be called from album microservice)
   - Upload Image in Album
   - Get Image from Album
-4. User Microservice
+3. User Microservice
   - Create User
   - Get User
-5. Auth Microservice
+4. Auth Microservice
   - Login
   - Register
   - JWT Generate
   - Validate JWT
-6. API Gateway
+5. API Gateway
   - Validate all requests foe valid jwt and add `user-id` header
   - Route requests to downstream microservices
 
@@ -67,9 +67,10 @@ This project is using microservice architecture and has following Microservices 
 8. GET all images of album - check for images in list
 9. GET all images of album - error is wrong album id
 10. UPLOAD image - success
-11. UPLOAD image - error on wrong album id
-12. GET/DOWNLOAD image - success
-13. GET/DOWNLOAD image - error on wrong album id
+11. UPLOAD file other than image - should return error
+12. UPLOAD image - error on wrong album id
+13. GET/DOWNLOAD image - success
+14. GET/DOWNLOAD image - error on wrong album id
 
 ## Module testing
 - GINKGO is used to perform module testing.
